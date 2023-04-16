@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -79,27 +79,30 @@ WSGI_APPLICATION = 'crm_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE' : 'django.db.backends.postgresql',
-        'NAME' : 'crm_3hff',
-        'HOSTNAME' : 'dpg-cgtc4p5269vbmetlge3g-a',
-        'PORT' :'5432',
-        'USER' : 'rojena',
-        'PASSWORD' :'AIFFJe0zFwU1CX9tmcPQXJGLtMLeNp1I',
-
-        # 'ENGINE' : 'django.db.backends.postgresql',
-        # 'NAME' : 'myserver',
-        # 'HOST' : 'localhost',
-        # 'PORT' :'5432',
-        # 'USER' : 'postgres',
-        # 'PASSWORD' :'admin',
-        
-    }
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE' : 'django.db.backends.postgresql',
+#         'NAME' : 'crm_3hff',
+#         'HOSTNAME' : 'dpg-cgtc4p5269vbmetlge3g-a',
+#         'PORT' :'5432',
+#         'USER' : 'rojena',
+#         'PASSWORD' :'AIFFJe0zFwU1CX9tmcPQXJGLtMLeNp1I',
+   
+#     }
+# }
 
 
 # Password validation
