@@ -1,0 +1,12 @@
+{%  extends 'crm_app/main.html' %}
+
+{% load static %}
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="btn btn-sm btn-primary" type="submit" value="Save">
+</form>
+
+
+{% endblock %}
